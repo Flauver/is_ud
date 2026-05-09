@@ -26,7 +26,7 @@ class QingyunLoader implements Loader {
     })()
     private 应该打空格(编码: string): boolean {
         // 四码没有空格简
-        if ([...编码].length === 4) return false;
+        if (编码.length === 4) return false;
         if (this.声母.getInstance().has(编码.at(-1)!)) return true;
         return false;
     }
@@ -61,11 +61,10 @@ class 是否是前缀 implements Judgment {
         for (let i = 0; i < 编码集合.size - 1; i++) {
             const 编码1 = 字母序编码表列表[i];
             const 编码2 = 字母序编码表列表[i + 1];
-            const 编码1长度 = [...编码1].length;
-            const 编码2数组 = [...编码2];
-            if (编码2数组.slice(0, 编码1长度).join('') === 编码1 && 编码1长度 < 编码2数组.length) {
+            const 编码1长度 = 编码1.length;
+            if (编码2.slice(0, 编码1长度) === 编码1 && 编码1长度 < 编码2.length) {
                 console.log(`${编码1} 是 ${编码2} 的左商`);
-                左商集.add(编码2数组.slice(编码1长度).join(''));
+                左商集.add(编码2.slice(编码1长度));
             }
         }
         return [左商集];
